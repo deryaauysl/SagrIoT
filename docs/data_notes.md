@@ -51,3 +51,11 @@ Internship report: 0.26 and 0.157 with 100 and 108 events. The small gap on MuGr
 ## Open points
 - Permittivity → VWC: Topp is made for mineral soil, not rockwool. Because the decision uses % of field capacity, the exact conversion matters less, but it should be stated as a limitation.
 - One series per sensor (3 per greenhouse) or the mean of the three?
+
+## Step 4 result: MLP vs. linear (25 Oct 2026, `results/step4_summary.csv`)
+Five MLP variants, three seeds each, against ridge (linear) and the physics model.
+No MLP beat the linear model on both greenhouses. Larger MLPs catch a few more
+events on AgriFusion but give more false alarms, and on MuGrow they are worse
+than the physics model in MAE: they fit the training greenhouse too closely.
+Regularized MLPs end up close to the linear model. **Decision: the linear model
+(one Dense layer) is the model taken to the ESP32.**
