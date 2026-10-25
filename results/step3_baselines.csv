@@ -1,0 +1,11 @@
+train,test,model,mae,rmse,ms,windows,skill,events,recall,precision,false_alarm,cross_err_min
+mugrow,agrifusion,ridge(vpd),0.889,1.063,0.104,1805,0.172,108.0,0.546,0.868,0.006,25.678
+mugrow,agrifusion,ridge(vpd+par),0.966,1.146,0.103,1805,0.101,108.0,0.537,0.841,0.008,31.552
+mugrow,agrifusion,driven_drying(vpd),1.071,1.274,0.067,1805,0.002,108.0,0.148,0.762,0.003,41.25
+mugrow,agrifusion,persistence,1.074,1.274,0.003,1805,0.0,108.0,0.0,,0.0,
+mugrow,agrifusion,seasonal_naive(288),1.504,1.675,0.007,1805,-0.401,108.0,0.787,0.669,0.029,55.235
+agrifusion,mugrow,ridge(vpd),0.893,1.046,0.123,1591,0.226,104.0,0.452,0.887,0.005,32.66
+agrifusion,mugrow,ridge(vpd+par),0.91,1.071,0.111,1591,0.211,104.0,0.51,0.791,0.011,33.491
+agrifusion,mugrow,driven_drying(vpd),1.022,1.219,0.078,1591,0.114,104.0,0.24,0.781,0.006,27.6
+agrifusion,mugrow,persistence,1.153,1.368,0.004,1591,0.0,104.0,0.0,,0.0,
+agrifusion,mugrow,seasonal_naive(288),1.949,2.044,0.007,1591,-0.69,104.0,0.596,0.408,0.072,61.048
