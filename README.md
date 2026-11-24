@@ -18,6 +18,17 @@ This repo holds work package A: a small forecasting model that runs on the ESP32
 | Early warning | Catch ≥ 40% of dry-soil events in two greenhouses not used in training (physics model: 26% and 16%) |
 | Model on the ESP32 | ≤ 50 KB model, ≤ 100 KB RAM, ≤ 100 ms per decision; same decision as the cloud model in ≥ 90% of cases |
 
+## Selected model
+`src/linear_model.py` trains the linear (ridge) forecaster on one greenhouse, tests it on the other
+with the internship evaluation code, and saves the weights to `models/linear_<train>.npz`.
+
+| Train → test | Events caught (recall) | Warnings that were real (precision) | Physics model recall |
+|---|---|---|---|
+| MuGrow → AgriFusion | 54.6% | 86.8% | 14.8% |
+| AgriFusion → MuGrow | 45.2% | 88.7% | 24.0% |
+
+Run: `python src/prepare.py data/raw data/processed`, then `python src/linear_model.py ../sagriot-dss`.
+
 ## Layout
 ```
 data/raw/        original downloads (git-ignored)

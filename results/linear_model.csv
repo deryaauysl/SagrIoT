@@ -1,0 +1,5 @@
+train,test,model,mae,rmse,ms,windows,events,recall,precision,false_alarm,cross_err_min
+mugrow,agrifusion,linear,0.889,1.063,0.095,1805,108.0,0.546,0.868,0.006,25.678
+mugrow,agrifusion,driven_drying(vpd),1.071,1.274,0.06,1805,108.0,0.148,0.762,0.003,41.25
+agrifusion,mugrow,linear,0.893,1.046,0.097,1591,104.0,0.452,0.887,0.005,32.66
+agrifusion,mugrow,driven_drying(vpd),1.022,1.219,0.062,1591,104.0,0.24,0.781,0.006,27.6
