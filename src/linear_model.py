@@ -6,6 +6,7 @@ Size  : 576 x 36 weights + 36 biases = 20,772 parameters (one dense layer)
 
 For each split it trains on one greenhouse (all three sensors), tests on the other
 with the internship evaluation code, and saves the weights to models/.
+Finally it trains the deployment model on both greenhouses (models/linear_all.npz).
 
 Usage: python src/linear_model.py ../sagriot-dss
 """
@@ -30,7 +31,9 @@ SPLITS = [("mugrow", "agrifusion"), ("agrifusion", "mugrow")]
 
 
 def train(train_name):
-    X, Y = make_windows(load(f"data/processed/{train_name}.csv"), DRIVERS, stride=3)
+    names = ["mugrow", "agrifusion"] if train_name == "all" else [train_name]
+    parts = [make_windows(load(f"data/processed/{n}.csv"), DRIVERS, stride=3) for n in names]
+    X, Y = np.concatenate([p[0] for p in parts]), np.concatenate([p[1] for p in parts])
     model = Ridge(alpha=ALPHA).fit(X, Y)
     return model, len(X)
 
@@ -63,3 +66,9 @@ for train_name, test_name in SPLITS:
     print(table[["model", "mae", "events", "recall", "precision", "false_alarm", "cross_err_min"]].to_string(index=False))
 
 pd.concat(rows).to_csv("results/linear_model.csv", index=False)
+
+# Deployment model: both greenhouses together. Not evaluated here (no unseen
+# greenhouse left); the two cross-greenhouse results above stand for it.
+model, n = train("all")
+save(model, "all", n)
+print(f"\ndeployment model: trained on both greenhouses ({n} windows) -> models/linear_all.npz")

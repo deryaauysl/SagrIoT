@@ -1,0 +1,11 @@
+{
+  "model": "ridge",
+  "alpha": 100.0,
+  "trained_on": "all",
+  "training_windows": 38107,
+  "inputs": "288 soil values minus current value, then 288 VPD values (kPa)",
+  "outputs": "36 changes from the current soil value (5-min steps, 3 h)",
+  "context": 288,
+  "horizon": 36,
+  "parameters": 20772
+}
